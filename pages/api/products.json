@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Coffee One",
+    "price": "0.0001",
+    "description": "The best coffee in the Solana Blockchain",
+    "image_url": "https://gateway.ipfscdn.io/ipfs/QmazGksXqFjBsnKGuHqpk2UtV29fNpwLGBTgFhtjt3A153",
+    "filename": "coffeOne.png",
+    "hash": "QmazGksXqFjBsnKGuHqpk2UtV29fNpwLGBTgFhtjt3A153"
+  },
+  {
+    "id": 2,
+    "name": "Coffee Two",
+    "price": "0.0001",
+    "description": "The best coffee in the Solana Blockchain",
+    "image_url": "https://gateway.ipfscdn.io/ipfs/QmazGksXqFjBsnKGuHqpk2UtV29fNpwLGBTgFhtjt3A153",
+    "filename": "coffeOne.png",
+    "hash": "QmazGksXqFjBsnKGuHqpk2UtV29fNpwLGBTgFhtjt3A153"
+  },
+  {
+    "id": 3,
+    "name": "Cofee Three",
+    "price": "0.00001",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/A_small_cup_of_coffee.JPG/220px-A_small_cup_of_coffee.JPG",
+    "description": "Coffee is a brewed drink prepared from roasted coffee beans.",
+    "filename": "torta-cochinita.jpg",
+    "hash": "QmSYUVstzaZPhYPRfKXjnntdwyVmyjv5ouWCB6F3oQgjL8"
+  },
+  {
+    "id": 4,
+    "name": "Torta",
+    "price": "0.0001",
+    "image_url": "",
+    "description": "asdasd",
+    "filename": "torta-de-jamon.jpg",
+    "hash": "QmddSgn6RAQG5o1tu9srSBFFmsv3Rc4VwB45xGgrc2Bt3q"
+  }
+]
