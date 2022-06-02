@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { create } from "ipfs-http-client";
 import styles from "../styles/CreateProduct.module.css";
 import {addProduct} from "../lib/api"
+import { readFiles } from "../lib/readFiles";
 
 const client = create("https://ipfs.infura.io:5001/api/v0");
 
@@ -13,17 +14,37 @@ const CreateProduct = () => {
     image_url: "",
     description: "",
   });
+  const [buffer, setBuffer] = useState(null)
+
   const [file, setFile] = useState({});
   const [uploading, setUploading] = useState(false);
 
   async function onChange(e) {
     setUploading(true);
     const files = e.target.files;
+    console.log('FILES> ', files);
     try {
+      
       console.log(files[0]);
+      // const reader = new window.FileReader()
+
+      // reader.readAsArrayBuffer(files[0])
+
+      // let bufferr;
+
+      // reader.onload = () => {
+      //   setBuffer(Buffer(reader.result))
+      //   bufferr = Buffer(reader.result)
+      //   console.log('ELBUFFERR: ', bufferr)
+      // }
+
+      const readResponse = await readFiles(files[0]);
+
+      // console.log('readResponse: ', readResponse)
+
+      
       const added = await client.add(files[0]);
-      console.log(added)
-      setFile({ filename: files[0].name, hash: added.path });
+      setFile({ filename: files[0].name, hash: added.path, file: file[0] });
     } catch (error) {
       console.log("Error uploading file: ", error);
     }
