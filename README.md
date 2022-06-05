@@ -10,4 +10,4 @@ To get started with this project, clone this repo and follow these commands:
 2. Run `npm run dev` to start the project
 
 
-You can see the app here: https://solana-pay-coffee-shop-mi7nygeu9-frankrsc.vercel.app
+You can see the app here: https://solana-pay-coffee-shop.vercel.app
