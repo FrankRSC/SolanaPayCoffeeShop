@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { create } from "ipfs-http-client";
 import styles from "../styles/CreateProduct.module.css";
 import {addProduct} from "../lib/api"
+import { readFiles } from "../lib/readFiles";
 
 const client = create("https://ipfs.infura.io:5001/api/v0");
 
@@ -13,6 +14,8 @@ const CreateProduct = () => {
     image_url: "",
     description: "",
   });
+  const [buffer, setBuffer] = useState(null)
+
   const [file, setFile] = useState({});
   const [uploading, setUploading] = useState(false);
 
@@ -20,10 +23,10 @@ const CreateProduct = () => {
     setUploading(true);
     const files = e.target.files;
     try {
-      console.log(files[0]);
+      
       const added = await client.add(files[0]);
-      console.log(added)
-      setFile({ filename: files[0].name, hash: added.path });
+      setFile({ filename: files[0].name, hash: added.path, file: file[0] });
+      
     } catch (error) {
       console.log("Error uploading file: ", error);
     }
@@ -36,7 +39,6 @@ const CreateProduct = () => {
       const product = { ...newProduct, ...file };
       console.log("Sending product to api",product);
       const response = await addProduct(product);
-      console.log('add>', response);
       if (response.status === 'ok') {
         alert("Product added!");
       }
