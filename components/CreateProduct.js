@@ -22,29 +22,11 @@ const CreateProduct = () => {
   async function onChange(e) {
     setUploading(true);
     const files = e.target.files;
-    console.log('FILES> ', files);
     try {
-      
-      console.log(files[0]);
-      // const reader = new window.FileReader()
-
-      // reader.readAsArrayBuffer(files[0])
-
-      // let bufferr;
-
-      // reader.onload = () => {
-      //   setBuffer(Buffer(reader.result))
-      //   bufferr = Buffer(reader.result)
-      //   console.log('ELBUFFERR: ', bufferr)
-      // }
-
-      const readResponse = await readFiles(files[0]);
-
-      // console.log('readResponse: ', readResponse)
-
       
       const added = await client.add(files[0]);
       setFile({ filename: files[0].name, hash: added.path, file: file[0] });
+      
     } catch (error) {
       console.log("Error uploading file: ", error);
     }
@@ -57,7 +39,6 @@ const CreateProduct = () => {
       const product = { ...newProduct, ...file };
       console.log("Sending product to api",product);
       const response = await addProduct(product);
-      console.log('add>', response);
       if (response.status === 'ok') {
         alert("Product added!");
       }

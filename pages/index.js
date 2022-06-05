@@ -23,17 +23,15 @@ const App = () => {
         .then(response => response.json())
         .then(data => {
           setProducts(data);
-          console.log("Products", data);
         });
     }
-    //Para ver
-    // fetchCoffee()
+    fetchCoffee()
 
   }, [publicKey]);
 
   const renderNotConnectedContainer = () => (
     <div>
-      <img src="https://media2.giphy.com/media/iEpkpgoWTi19Y0xIM6/giphy.gif?cid=790b76119f95c7e0cf63aa425e49d0696b8185a68ea922b2&rid=giphy.gif&ct=g" alt="cofee" />
+      <img src="https://media2.giphy.com/media/iEpkpgoWTi19Y0xIM6/giphy.gif?cid=790b76119f95c7e0cf63aa425e49d0696b8185a68ea922b2&rid=giphy.gif&ct=g" alt="coffee" />
       <div className="button-container">
         <WalletMultiButton className="cta-button connect-wallet-button" />
       </div>
@@ -53,13 +51,15 @@ const App = () => {
     <div className="App">
       <div className="container">
         <header className="header-container">
-          <p className="header">Coffee Solana Store</p>
+          <div className="title-container">
+            <p className="header">Coffee Solana Store</p>
+            {isOwner && (
+              <button className="create-product-button" onClick={() => setCreating(!creating)}>
+                {creating ? "Close" : "Create Product"}
+              </button>
+            )}
+          </div>
           <p className="sub-text">The only Coffee Solana Store that accepts Solana and USDC</p>
-          {isOwner && (
-            <button className="create-product-button" onClick={() => setCreating(!creating)}>
-              {creating ? "Close" : "Create Product"}
-            </button>
-          )}
         </header>
 
         <main>
@@ -67,7 +67,6 @@ const App = () => {
           {creating && <CreateProduct />}
           {publicKey ? renderItemBuyContainer() : renderNotConnectedContainer()}
         </main>
-
       </div>
     </div>
   );
